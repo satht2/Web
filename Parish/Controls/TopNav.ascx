@@ -3,10 +3,13 @@
 <div>
     <div>
         <asp:HyperLink ID="HyperLink2" CssClass="cssButton" NavigateUrl="~/home.aspx" runat="server">Home</asp:HyperLink>
+        <asp:LinkButton ID="lkbMember" CssClass="cssButton" runat="server" OnClick="lkbMember_Click">Member</asp:LinkButton>
+        <asp:LinkButton ID="lkbChurch" CssClass="cssButton" runat="server" OnClick="lkbChurch_Click">Church</asp:LinkButton>
         <asp:HyperLink ID="HyperLink1" CssClass="cssButton" NavigateUrl="~/Member.aspx"
-            runat="server">Member</asp:HyperLink>
+            runat="server"></asp:HyperLink>
         <asp:HyperLink ID="HyperLink3" CssClass="cssButton" NavigateUrl="~/Church.aspx"
-            runat="server">Church</asp:HyperLink>
+            runat="server"></asp:HyperLink>
+        
         <%--<asp:HyperLink ID="HyperLink4" CssClass="cssButton" NavigateUrl="~/addClientNotes.aspx"
             runat="server">Client Notes</asp:HyperLink>
         <asp:HyperLink ID="HyperLink5" CssClass="cssButton" NavigateUrl="~/addClinicalSupervisor.aspx"

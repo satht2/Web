@@ -42,23 +42,14 @@
                     FooterStyle-HorizontalAlign="Center"
                     FooterStyle-Font-Bold="true"
                     FooterStyle-ForeColor="#555555"
-                    ShowFooter="true">
+                    ShowFooter="true" CellPadding="5">
                     <Columns>
-                        <asp:TemplateField HeaderText="Donation Date">
+                        <asp:TemplateField HeaderText="Donation Date" ItemStyle-HorizontalAlign="Left">
                             <ItemTemplate><%#Eval("CreatedDate")%></ItemTemplate>
-                            <%--<FooterTemplate>
-                                <div><asp:Label Text="Total" runat="server" /></div>
-                            </FooterTemplate>--%>
                         </asp:TemplateField>                        
-                        <asp:BoundField DataField="DonationType" HeaderText="Donation Type" />
-                        <asp:BoundField DataField="AddedBy" HeaderText="Created By" />
-                        <asp:TemplateField HeaderText="Amount">
-                            <ItemTemplate><%#Eval("Deposit", "{0:C}")%></ItemTemplate>
-                            <%--<FooterTemplate>                                
-                                <div><asp:Label ID="lblTotal" Text='<%#Eval("Total")%>' runat="server" /></div>
-                            </FooterTemplate>--%>
-                        </asp:TemplateField> 
-                        <asp:BoundField DataField="Deposit" HeaderText="Amount" DataFormatString="{0:C}" ItemStyle-HorizontalAlign="Right" />
+                        <asp:BoundField DataField="DonationType" HeaderText="Donation Type" ItemStyle-HorizontalAlign="Left"/>
+                        <asp:BoundField DataField="AddedBy" HeaderText="Created By" ItemStyle-HorizontalAlign="Left"/>
+                        <asp:BoundField DataField="Deposit" HeaderText="Amount" DataFormatString="{0:C}" HtmlEncode="false" ItemStyle-HorizontalAlign="Right" />
                     </Columns>
                     <EmptyDataTemplate>
                         <div>No records found.</div>

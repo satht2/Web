@@ -5,17 +5,20 @@
         $("#<%= txtDOConfirmation.ClientID %>").datepicker({
             changeMonth: true,
             changeYear: true,
-            maxDate: "+0M + 0D"
+            maxDate: "+0M + 0D",
+            dateFormat: 'd-m-yy'
         });
         $("#<%= txtDOBaptism.ClientID %>").datepicker({
             changeMonth: true,
             changeYear: true,
-            maxDate: "+0M + 0D"
+            maxDate: "+0M + 0D",
+            dateFormat: 'd-m-yy'
         });
         $("#<%= txtDOGiven.ClientID %>").datepicker({
             changeMonth: true,
             changeYear: true,
-            maxDate: "+0M + 0D"
+            maxDate: "+0M + 0D",
+            dateFormat: 'd-m-yy'
         });
     });
 
@@ -58,14 +61,14 @@
             </td>
         </tr>
         <tr>
-            <td>Date of Baptism(mm/dd/yyyy):
+            <td>Date of Baptism(d-m-yy):
             </td>
             <td>
                 <asp:TextBox ID="txtDOBaptism" runat="server"></asp:TextBox>
             </td>
             <td style="width: 30px;">&nbsp;
             </td>
-            <td>Date of Confirmation(mm/dd/yyyy):
+            <td>Date of Confirmation(d-m-yy):
             </td>
             <td>
                 <asp:TextBox ID="txtDOConfirmation" runat="server"></asp:TextBox>
@@ -86,7 +89,7 @@
             </td>
         </tr>
         <tr>
-            <td>Given On Date(mm/dd/yyyy):
+            <td>Given On Date(d-m-yy):
             </td>
             <td>
                 <asp:TextBox ID="txtDOGiven" runat="server"></asp:TextBox>

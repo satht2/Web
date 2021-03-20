@@ -5,17 +5,20 @@
         $("#<%= txtDOB.ClientID %>").datepicker({
             changeMonth: true,
             changeYear: true,
-            maxDate: "+0M + 0D"
+            maxDate: "+0M + 0D",
+            dateFormat: 'd-m-yy'
         });
         $("#<%= txtDOBaptism.ClientID %>").datepicker({
             changeMonth: true,
             changeYear: true,
-            maxDate: "+0M + 0D"
+            maxDate: "+0M + 0D",
+            dateFormat: 'd-m-yy'
         });
         $("#<%= txtDOGiven.ClientID %>").datepicker({
             changeMonth: true,
             changeYear: true,
-            maxDate: "+0M + 0D"
+            maxDate: "+0M + 0D",
+            dateFormat: 'd-m-yy'
         });
     });
 
@@ -65,7 +68,7 @@
         </tr>
         <tr>
             <td>
-                Date of Birth(mm/dd/yyyy):
+                Date of Birth(d-m-yy):
             </td>
             <td>
                 <asp:TextBox ID="txtDOB" runat="server"></asp:TextBox>
@@ -74,7 +77,7 @@
                 &nbsp;
             </td>
             <td>
-                Date of Baptism(mm/dd/yyyy):
+                Date of Baptism(d-m-yy):
             </td>
             <td>
                 <asp:TextBox ID="txtDOBaptism" runat="server"></asp:TextBox>
@@ -108,13 +111,19 @@
                 &nbsp;
             </td>
             <td>
+                Given On Date(d-m-yy):
+            </td>
+            <td>
+                <asp:TextBox ID="txtDOGiven" runat="server"></asp:TextBox>
+            </td>
+            <%--<td>
                 First Holy Communion:
             </td>
             <td>
                 <asp:TextBox ID="txtFirstHolyCommunion" runat="server"></asp:TextBox>
-            </td>
+            </td>--%>
         </tr>
-        <tr>
+        <%--<tr>
             <td>
                 Confirmation:
             </td>
@@ -130,7 +139,7 @@
             <td>
                 <asp:TextBox ID="txtDOGiven" runat="server"></asp:TextBox>
             </td>
-        </tr>        
+        </tr>  --%>      
         <tr>
             <td>
                 Parish Priest:

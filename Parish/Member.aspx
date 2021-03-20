@@ -36,7 +36,8 @@
             <tr>
                 <td colspan="2">
                     <asp:GridView Width="100%" ID="grdMembers" runat="server" AutoGenerateColumns="false" AllowPaging="true"
-                        OnPageIndexChanging="grdMembers_OnPaging" DataKeyName="MemberID" PageSize="2">
+                        OnPageIndexChanging="grdMembers_OnPaging" DataKeyName="MemberID" PageSize="2" RowStyle-HorizontalAlign="Left"
+                        CellPadding="5">
                         <Columns>
                             <asp:BoundField DataField="FamilyBookNumber" HeaderText="Family Book Number" />
                             <asp:BoundField DataField="FirstName" HeaderText="First Name" />
@@ -59,6 +60,7 @@
         </table>
     </div>
     <div id="divSelectedMemberAction" visible="false" runat="server">
+        <h2>Member: <asp:Label ID="lblmemberName" runat="server" Text=""></asp:Label></h2>
         <table align="center" class="content_border">
             <tr>
                 <td>
@@ -95,7 +97,7 @@
             <tr>
                 <td colspan="4">
                     <asp:GridView Width="100%" ID="grdSelectedMember" runat="server" AutoGenerateColumns="false"
-                        DataKeyName="MemberID">
+                        DataKeyName="MemberID" RowStyle-HorizontalAlign="Left" CellPadding="5">
                         <Columns>
                             <asp:BoundField DataField="FamilyBookNumber" HeaderText="Family Book Number" />
                             <asp:BoundField DataField="FirstName" HeaderText="First Name" />
@@ -129,13 +131,14 @@
                         AlternatingRowStyle-BackColor="#E9ECF1"
                         HeaderStyle-BackColor="white"
                         Font-Names="Arial"
-                        RowStyle-HorizontalAlign="Center"
+                        RowStyle-HorizontalAlign="Left"
                         RowStyle-Height="22"
                         HeaderStyle-Height="25"
                         FooterStyle-HorizontalAlign="Center"
                         FooterStyle-Font-Bold="true"
                         FooterStyle-ForeColor="#555555"
-                        ShowFooter="true">
+                        ShowFooter="true"
+                        CellPadding="5">
                         <Columns>
                             <asp:BoundField DataField="DependentType" HeaderText="Dependent Relationship" />
                             <asp:BoundField DataField="FirstName" HeaderText="First Name" />
@@ -157,28 +160,20 @@
                         AlternatingRowStyle-BackColor="#E9ECF1"
                         HeaderStyle-BackColor="white"
                         Font-Names="Arial"
-                        RowStyle-HorizontalAlign="Center"
+                        RowStyle-HorizontalAlign="Left"
                         RowStyle-Height="22"
                         HeaderStyle-Height="25"
                         FooterStyle-HorizontalAlign="Center"
                         FooterStyle-Font-Bold="true"
                         FooterStyle-ForeColor="#555555"
-                        ShowFooter="true">
+                        ShowFooter="true"
+                        CellPadding="5">
                         <Columns>
                             <asp:TemplateField HeaderText="Donation Date">
                                 <ItemTemplate><%#Eval("CreatedDate")%></ItemTemplate>
-                                <%--<FooterTemplate>
-                                <div><asp:Label Text="Total" runat="server" /></div>
-                            </FooterTemplate>--%>
                             </asp:TemplateField>
                             <asp:BoundField DataField="DonationType" HeaderText="Donation Type" />
                             <asp:BoundField DataField="AddedBy" HeaderText="Created By" />
-                            <asp:TemplateField HeaderText="Amount">
-                                <ItemTemplate><%#Eval("Deposit", "{0:C}")%></ItemTemplate>
-                                <%--<FooterTemplate>                                
-                                <div><asp:Label ID="lblTotal" Text='<%#Eval("Total")%>' runat="server" /></div>
-                            </FooterTemplate>--%>
-                            </asp:TemplateField>
                             <asp:BoundField DataField="Deposit" HeaderText="Amount" DataFormatString="{0:C}" ItemStyle-HorizontalAlign="Right" />
                         </Columns>
                         <EmptyDataTemplate>
@@ -195,13 +190,14 @@
                         AlternatingRowStyle-BackColor="#E9ECF1"
                         HeaderStyle-BackColor="white"
                         Font-Names="Arial"
-                        RowStyle-HorizontalAlign="Center"
+                        RowStyle-HorizontalAlign="Left"
                         RowStyle-Height="22"
                         HeaderStyle-Height="25"
                         FooterStyle-HorizontalAlign="Center"
                         FooterStyle-Font-Bold="true"
                         FooterStyle-ForeColor="#555555"
-                        ShowFooter="true">
+                        ShowFooter="true"
+                        CellPadding="5">
                         <Columns>
                             <asp:TemplateField HeaderText="Name">
                                 <ItemTemplate><%#Eval("Name")%></ItemTemplate>

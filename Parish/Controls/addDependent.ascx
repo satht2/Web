@@ -70,13 +70,14 @@
                     AlternatingRowStyle-BackColor="#E9ECF1"
                     HeaderStyle-BackColor="white"
                     Font-Names="Arial"
-                    RowStyle-HorizontalAlign="Center"
+                    RowStyle-HorizontalAlign="Left"
                     RowStyle-Height="22"
                     HeaderStyle-Height="25"
                     FooterStyle-HorizontalAlign="Center"
                     FooterStyle-Font-Bold="true"
                     FooterStyle-ForeColor="#555555"
-                    ShowFooter="true">
+                    ShowFooter="true"
+                    CellPadding="5">
                     <Columns>
                         <asp:BoundField DataField="DependentType" HeaderText="Dependent Relationship" />
                         <asp:BoundField DataField="FirstName" HeaderText="First Name" />

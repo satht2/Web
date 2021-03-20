@@ -317,3 +317,10 @@ div.demo-description {
 #widget-docs .ui-widget-content a:active { color:#0b559b; }
 
 
+table.donationGridview {color:#000099;}
+table.donationGridview th { font-weight:bold;color:#006600;font-size:1.1em;}
+table.donationGridview td {font-size: 1em; padding:3px;}
+table.donationGridview td:nth-child(1),
+table.donationGridview td:nth-child(2),
+table.donationGridview td:nth-child(3) {text-align:left;}
+table.donationGridview td:nth-child(4) {text-align:right;}

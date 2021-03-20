@@ -82,15 +82,15 @@ public partial class Controls_addMember : System.Web.UI.UserControl
             if (ValidateClientInfo())
             {
                 DateTime? FreeToMarry = null;
-                int? FamilyBookNumber = null;
+                //int? FamilyBookNumber = null;
                 if (!string.IsNullOrWhiteSpace(txtFreeToMarry.Text.Trim()))
                 {
                     FreeToMarry = Convert.ToDateTime(txtFreeToMarry.Text);
                 }
-                if (!string.IsNullOrWhiteSpace(txtFamilyBookNumber.Text.Trim()))
-                {
-                    FamilyBookNumber = Convert.ToInt32(txtFamilyBookNumber.Text);
-                }
+                //if (!string.IsNullOrWhiteSpace(txtFamilyBookNumber.Text.Trim()))
+                //{
+                //    FamilyBookNumber = Convert.ToInt32(txtFamilyBookNumber.Text);
+                //}
                 if ((Session["MemberID"] != null) && (IsNumeric(Session["MemberID"])))
                 {
                     MemberID = Convert.ToInt32(Session["MemberID"]);
@@ -99,7 +99,7 @@ public partial class Controls_addMember : System.Web.UI.UserControl
                     int updateValue = dC.UpdateMember(MemberID, txtFirstName.Text, txtLastName.Text, Convert.ToDateTime(txtDOB.Text), ddSex.SelectedValue,
                                 txtNotes.Text, txtAddress.Text, txtCity.Text, txtPostalCode.Text, txtHomePhone.Text,
                                 txtCellPhone.Text, txtPreContact.Text, ddMaritalStatus.SelectedIndex, txtEmail.Text,
-                                FamilyBookNumber, chkActive.Checked, FreeToMarry);
+                                txtFamilyBookNumber.Text, chkActive.Checked, FreeToMarry);
                     if (updateValue == -1)
                     {
                         lblError.Text = "DB Error.<br/>";
@@ -118,7 +118,7 @@ public partial class Controls_addMember : System.Web.UI.UserControl
                     string dv = dC.InsertMember(txtFirstName.Text, txtLastName.Text, Convert.ToDateTime(txtDOB.Text), ddSex.SelectedValue,
                                 txtNotes.Text, txtAddress.Text, txtCity.Text, txtPostalCode.Text, txtHomePhone.Text,
                                 txtCellPhone.Text, txtPreContact.Text, ddMaritalStatus.SelectedIndex, txtEmail.Text,
-                                FamilyBookNumber, chkActive.Checked, FreeToMarry);
+                                txtFamilyBookNumber.Text, chkActive.Checked, FreeToMarry);
                     if (IsNumeric(dv) && Convert.ToInt32(dv) == -1)
                     {
                         lblError.Text = "DB Error.<br/>";

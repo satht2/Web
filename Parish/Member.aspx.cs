@@ -7,6 +7,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Parish.DB.Modules;
 using System.Data;
+using System.Globalization;
+using System.Threading;
+
 public partial class Member : PageBase
 {
     private int _memberID;
@@ -32,6 +35,14 @@ public partial class Member : PageBase
                 divMembers.Visible = false;
             }
         }
+    }
+    protected override void InitializeCulture()
+    {
+        CultureInfo ci = new CultureInfo("ta-IN");
+        ci.NumberFormat.CurrencySymbol = "Rs";
+        Thread.CurrentThread.CurrentCulture = ci;
+
+        base.InitializeCulture();
     }
     //not using
     protected void GetMember_Selected(object sender, EventArgs e)
@@ -93,6 +104,7 @@ public partial class Member : PageBase
     }
     protected void btnCancel_Click(object sender, EventArgs e)
     {
+        GetSelectedMember();
         divSelectedMember.Visible = false;
         divClientinfo.Visible = false;
         divMembers.Visible = false;
@@ -109,6 +121,7 @@ public partial class Member : PageBase
         addMember.EditMember();
         divClientinfo.Visible = true;
         divSelectedMemberAction.Visible = true;
+        divSelectedMember.Visible = false;
     }
     protected void lnkEditCertificate_Command(object sender, CommandEventArgs e)
     {
@@ -165,6 +178,10 @@ public partial class Member : PageBase
             DataClients dC = new DataClients();
             DataView dv = dC.GetMemberByMemberID(memberID);
             DataTable oDataTable = dv.Table;
+            
+            DataRow dr = oDataTable.Rows[0];
+            lblmemberName.Text = dr["FirstName"].ToString() + " " + dr["LastName"].ToString();
+
 
             grdSelectedMember.DataSource = oDataTable;
             grdSelectedMember.DataBind();
