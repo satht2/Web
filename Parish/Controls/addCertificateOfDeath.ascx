@@ -56,14 +56,14 @@
             </td>
         </tr>
         <tr>
-            <td style="width: 150px;">Date of Death(d-m-yy):
+            <td style="width: 150px;">Date of Death<br />(d-m-yy):
             </td>
             <td>
                 <asp:TextBox ID="txtDODeath" runat="server"></asp:TextBox>
             </td>
             <td style="width: 30px;">&nbsp;
             </td>
-            <td style="width: 130px;">Date of Burial(d-m-yy):
+            <td style="width: 130px;">Date of Burial<br />(d-m-yy):
             </td>
             <td>
                 <asp:TextBox ID="txtDOBurial" runat="server"></asp:TextBox>
@@ -77,7 +77,7 @@
             </td>
             <td style="width: 30px;">&nbsp;
             </td>
-            <td>Date of Given(d-m-yy):
+            <td>Date of Given<br />(d-m-yy):
             </td>
             <td>
                 <asp:TextBox ID="txtDOGiven" runat="server"></asp:TextBox>
@@ -95,6 +95,21 @@
             </td>
             <td>
                 <asp:TextBox ID="txtDeed" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+
+            <td style="width: 30px;">&nbsp;
+            </td>
+            <td>Active:
+            </td>
+            <td>
+                <asp:CheckBox ID="chkActive" runat="server" Checked="true" />
             </td>
         </tr>        
     </table>

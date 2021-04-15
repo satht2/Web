@@ -5,6 +5,10 @@
 <%@ Register Src="~/Controls/addDependent.ascx" TagPrefix="uc1" TagName="addDependent" %>
 <%@ Register Src="~/Controls/addCertificateOfBaptism.ascx" TagPrefix="uc1" TagName="addCertificateOfBaptism" %>
 <%@ Register Src="~/Controls/addCertificateOfConfirmation.ascx" TagPrefix="uc1" TagName="addCertificateOfConfirmation" %>
+<%@ Register Src="~/Controls/addCertificateOfMarriage.ascx" TagPrefix="uc1" TagName="addCertificateOfMarriage" %>
+<%@ Register Src="~/Controls/addCertificateOfDeath.ascx" TagPrefix="uc1" TagName="addCertificateOfDeath" %>
+
+
 
 
 
@@ -220,8 +224,12 @@
     <div id="divConfirmation" runat="server" visible="false">
         <uc1:addCertificateOfConfirmation runat="server" ID="addCertificateOfConfirmation" />
     </div>
-    <div id="divDeath" runat="server" visible="false"></div>
-    <div id="divMarriage" runat="server" visible="false"></div>
+    <div id="divDeath" runat="server" visible="false">
+        <uc1:addCertificateOfDeath runat="server" ID="addCertificateOfDeath" />
+    </div>
+    <div id="divMarriage" runat="server" visible="false">
+        <uc1:addCertificateOfMarriage runat="server" ID="addCertificateOfMarriage" />
+    </div>
     <div id="divDonation" runat="server" visible="false">
         <uc1:addDonation runat="server" ID="addDonation" />
     </div>

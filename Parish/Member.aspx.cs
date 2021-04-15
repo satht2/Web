@@ -101,6 +101,18 @@ public partial class Member : PageBase
             addCertificateOfConfirmation.MemberID = _memberID;
             addCertificateOfConfirmation.AddConfirmations();
         }
+        if (ddCertificateType.SelectedItem.Text == "Marriage")
+        {
+            divMarriage.Visible = true;
+            addCertificateOfMarriage.MemberID = _memberID;
+            addCertificateOfMarriage.AddMarriage();
+        }
+        if (ddCertificateType.SelectedItem.Text == "Death")
+        {
+            divDeath.Visible = true;
+            addCertificateOfDeath.MemberID = _memberID;
+            addCertificateOfDeath.AddDeath();
+        }
     }
     protected void btnCancel_Click(object sender, EventArgs e)
     {

@@ -12,7 +12,7 @@ public partial class Controls_addCertificateOfDeath : System.Web.UI.UserControl
     public int CertificateTypeID { get; set; }
     protected StringBuilder msgError = new StringBuilder();
 
-    public void AddBaptism()
+    public void AddDeath()
     {
         //GetSex();
         if (MemberID != 0)
