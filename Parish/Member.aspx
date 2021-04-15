@@ -36,7 +36,7 @@
             <tr>
                 <td colspan="2">
                     <asp:GridView Width="100%" ID="grdMembers" runat="server" AutoGenerateColumns="false" AllowPaging="true"
-                        OnPageIndexChanging="grdMembers_OnPaging" DataKeyName="MemberID" PageSize="2" RowStyle-HorizontalAlign="Left"
+                        OnPageIndexChanging="grdMembers_OnPaging" DataKeyName="MemberID" PageSize="50" RowStyle-HorizontalAlign="Left"
                         CellPadding="5">
                         <Columns>
                             <asp:BoundField DataField="FamilyBookNumber" HeaderText="Family Book Number" />
