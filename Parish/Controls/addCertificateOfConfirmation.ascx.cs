@@ -69,7 +69,6 @@ public partial class Controls_addCertificateOfConfirmation : System.Web.UI.UserC
     {
         try
         {
-            lblError.ForeColor = System.Drawing.Color.Red;
             if (ValidateClientInfo())
             {
                 MemberID = Convert.ToInt32(Session["MemberID"]);
@@ -87,12 +86,8 @@ public partial class Controls_addCertificateOfConfirmation : System.Web.UI.UserC
                 else
                 {
                     ClearCertificate();
-                    lblError.Text = "Success: The confirmation certificate added to the system.";
-                    lblError.ForeColor = System.Drawing.Color.Green;
                 }
             }
-            else
-                lblError.Text = msgError.ToString();
         }
         catch (Exception ex)
         {
