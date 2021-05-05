@@ -183,14 +183,14 @@ public partial class Controls_addMember : System.Web.UI.UserControl
                 bValidate = false;
                 msgError.AppendFormat("Please select the Marital Status.<br/>");
             }
-            if (!string.IsNullOrWhiteSpace(txtFamilyBookNumber.Text.Trim()))
-            {
-                if (!Utilities.IsNumeric(txtFamilyBookNumber.Text))
-                {
-                    bValidate = false;
-                    msgError.AppendFormat("Enter number only for Family Book #<br/>");
-                }
-            }
+            //if (!string.IsNullOrWhiteSpace(txtFamilyBookNumber.Text.Trim()))
+            //{
+                //if (!Utilities.IsNumeric(txtFamilyBookNumber.Text))
+                //{
+                //    bValidate = false;
+                //    msgError.AppendFormat("Enter number only for Family Book #<br/>");
+                //}
+            //}
         }
         catch
         {
