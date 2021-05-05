@@ -8,7 +8,9 @@
         $("#<%= txtDOB.ClientID %>").datepicker({
             changeMonth: true,
             changeYear: true,
-            maxDate: "+0M + 0D"
+            maxDate: "+0M + 0D",
+            yearRange: "-100Y : +1Y"
+
         });
         $("#<%= txtFreeToMarry.ClientID %>").datepicker({
             changeMonth: true,

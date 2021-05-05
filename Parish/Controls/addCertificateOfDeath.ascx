@@ -15,6 +15,12 @@
             maxDate: "+0M + 0D",
             dateFormat: 'd-m-yy'
         });
+        $("#<%= txtDOGiven.ClientID %>").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            maxDate: "+0M + 0D",
+            dateFormat: 'd-m-yy'
+        });
     });
 
 </script>

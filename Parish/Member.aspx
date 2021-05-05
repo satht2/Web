@@ -43,20 +43,32 @@
                         OnPageIndexChanging="grdMembers_OnPaging" DataKeyName="MemberID" PageSize="50" RowStyle-HorizontalAlign="Left"
                         CellPadding="5">
                         <Columns>
-                            <asp:BoundField DataField="FamilyBookNumber" HeaderText="Family Book Number" />
-                            <asp:BoundField DataField="FirstName" HeaderText="First Name" />
+                            <%--<asp:BoundField DataField="FamilyBookNumber" HeaderText="Family Book Number" />--%>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkFamilyBookNumber" runat="server" CommandArgument='<%#Eval("MemberID")%>'
+                                        Text='<%#Eval("FamilyBookNumber")%>' OnCommand="lnkSelect_Command"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkFirstName" runat="server" CommandArgument='<%#Eval("MemberID")%>'
+                                        Text='<%#Eval("FirstName")%>' OnCommand="lnkSelect_Command"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <%--<asp:BoundField DataField="FirstName" HeaderText="First Name" />--%>
                             <asp:BoundField DataField="LastName" HeaderText="Last Name" />
                             <asp:BoundField DataField="HomePhone" HeaderText="Home Phone" />
                             <asp:BoundField DataField="CellPhone" HeaderText="Cell Phone" />
                             <asp:BoundField DataField="Email" HeaderText="Email" />
                             <asp:BoundField DataField="Active" HeaderText="Active" />
-                            <asp:TemplateField>
+                            <%--<asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkSelect" runat="server" CommandArgument='<%#  
                                          Eval("MemberID")%>'
                                         Text="Select" OnCommand="lnkSelect_Command"></asp:LinkButton>
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                         </Columns>
                     </asp:GridView>
                 </td>
