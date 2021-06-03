@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parish.DB.Modules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,7 +60,7 @@ public partial class Controls_addCertificateOfDeath : System.Web.UI.UserControl
         txtDODeath.Text = "";
         txtDOBurial.Text = "";
         txtPlaceOfBurial.Text = "";
-        txtDOGiven.Text = "";
+        //txtDOGiven.Text = "";
         txtDeed.Text = "";
         txtDOGiven.Text = "";
         txtParishPriest.Text = "";
@@ -73,23 +74,22 @@ public partial class Controls_addCertificateOfDeath : System.Web.UI.UserControl
             {
                 MemberID = Convert.ToInt32(Session["MemberID"]);
                 int UserID = Convert.ToInt32(Session["UserID"]);
-                //DataClients dC = new DataClients();
+                DataClients dC = new DataClients();
 
-                //string dv = dC.InsertCertifiateOfBaptism(MemberID, 1, txtName.Text, ddSex.SelectedValue, txtParentFatherName.Text
-                //    , txtParentMotherName.Text, Convert.ToDateTime(txtDOB.Text), Convert.ToDateTime(txtDOBaptism.Text), txtSponsor1.Text
-                //    , txtSponsor2.Text, txtMinister.Text, null, null, Convert.ToDateTime(txtDOGiven.Text)
-                //    , txtParishPriest.Text, UserID);
+                string dv = dC.InsertCertifiateOfDeath(MemberID, 3, txtName.Text, ddSex.SelectedValue, Convert.ToInt32(txtAge.Text)
+                    , txtAddress.Text, Convert.ToDateTime(txtDODeath.Text), Convert.ToDateTime(txtDOBurial.Text), txtPlaceOfBurial.Text
+                    , Convert.ToDateTime(txtDOGiven.Text), txtParishPriest.Text, UserID, txtDeed.Text);
 
-                //if (Utilities.IsNumeric(dv) && Convert.ToInt32(dv) == -1)
-                //{
-                //    lblError.Text = "DB Error.<br/>";
-                //}
-                //else
-                //{
-                //    ClearCertificate();
-                //    lblError.Text = "Success: The confirmation certificate added to the system.";
-                //    lblError.ForeColor = System.Drawing.Color.Green;
-                //}
+                if (Utilities.IsNumeric(dv) && Convert.ToInt32(dv) == -1)
+                {
+                    lblError.Text = "DB Error.<br/>";
+                }
+                else
+                {
+                    ClearCertificate();
+                    lblError.Text = "Success: The death certificate added to the system.";
+                    lblError.ForeColor = System.Drawing.Color.Green;
+                }
             }
             else
                 lblError.Text = msgError.ToString();

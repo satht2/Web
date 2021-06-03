@@ -2,7 +2,10 @@
 
 <div class="grid-container fluid">
     <div class="grid-x">
-        <div class="small-11 large-9 large-offset-1">
+        <div class="small-3 small-offset-1 large-3 large-offset-1">
+            <h1>Jaffna RC Diocese</h1>
+        </div>
+        <div class="small-7 large-7" style="text-align:right">
             <asp:HyperLink ID="HyperLink2" CssClass="cssButton" NavigateUrl="~/home.aspx" runat="server">Home</asp:HyperLink>
             <asp:LinkButton ID="lkbMember" CssClass="cssButton" runat="server" OnClick="lkbMember_Click">Member</asp:LinkButton>
             <asp:LinkButton ID="lkbChurch" CssClass="cssButton" runat="server" OnClick="lkbChurch_Click">Church</asp:LinkButton>
@@ -17,10 +20,13 @@
                 runat="server">Edit Clinical Supervisor</asp:HyperLink>--%>
             <%--<asp:LinkButton ID="LinkButton2" CssClass="cssButton" runat="server">About Us</asp:LinkButton>--%>
             <%--<asp:LinkButton ID="LinkButton3" CssClass="cssButton" runat="server">Contact Us</asp:LinkButton>--%>
+
+            <asp:LinkButton ID="lkbSignOut" CssClass="cssButton" runat="server" OnClick="lkbSignOut_Click">Sign out</asp:LinkButton>
         </div>
 
-        <div class="small-1" style="text-align: right">
-            <asp:LinkButton ID="lkbSignOut" runat="server" OnClick="lkbSignOut_Click">Sign out</asp:LinkButton>
-        </div>
     </div>
+
 </div>
+
+
+

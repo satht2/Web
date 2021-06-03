@@ -39,14 +39,11 @@
 
                 <div id="outer_frame" class="grid-x">
                     <div id="inner_frame_bg_top" class="large-12 large-offset-0 small-12 cell">
-                        <div id="header">
-                            <img src='<%= Page.ResolveUrl("~/images/logo.jpg") %>' id="site_logo_image" alt="Parish" title="Parish" />
-                        </div>
-                        <div style="clear: both;">
-                        </div>
+                        
                         <div id="top_navigation">
                             <uc1:TopNav runat="server" ID="TopNav" />
                         </div>
+
                         <div id="content">
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                             </asp:ContentPlaceHolder>
