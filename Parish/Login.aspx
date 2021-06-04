@@ -4,26 +4,42 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:Panel runat="server" DefaultButton="LinkButtonOK">
-        <div class="grid-container fluid">
+        <div class="grid-container fluid login_background">
             <div class="grid-x">
-                <table class="small-12 small-offset-0 large-10 large-offset-1">
-                    <tr>
-                        <td>User name
-                        </td>
-                        <td>
-                            <asp:TextBox ID="TextBoxUserName" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Password
-                        </td>
-                        <td>
-                            <asp:TextBox ID="TextBoxPassword" TextMode="Password" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                </table>
-                <div class="small-12 small-offset-0 large-10 large-offset-1">
-                    <asp:LinkButton ID="LinkButtonOK" runat="server" CssClass="cssButton" OnClick="LinkButtonOK_Click">OK</asp:LinkButton>
+                <div class="large-12 small-12">
+                    <div class="login_card grid-container">
+                        <div class="grid-x">
+                            <div class="small-6 large-6">
+                                <img class="login_image" src="./Images/Church.jpg">
+                            </div>
+                            <div class="small-6 large-6 login_section">
+                                
+                                <table class="login_table">
+                                    <tr>
+                                        <td>
+                                            <h2>Sign in to the database</h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:TextBox ID="TextBoxUserName" CssClass="login_textbox" placeholder="Username" runat="server" label="hi"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:TextBox ID="TextBoxPassword" CssClass="login_textbox" TextMode="Password" placeholder="Password" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:LinkButton ID="LinkButtonOK" runat="server" CssClass="login_button" OnClick="LinkButtonOK_Click">Sign In</asp:LinkButton>
+                                        </td>
+                                        
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

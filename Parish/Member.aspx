@@ -13,43 +13,44 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="grid-container fluid">
-        <div id="divMembers" visible="true" runat="server">
-            <div class="grid-x">
+        <div class="grid-x">
+
+            <div class="large-12 small-12">
+                <div class="logo_box">
+                    <div class="logo_image">
+                        <img src="./Images/logo.png">
+                    </div>
+                </div>
+            </div>
+
+            <div id="divMembers" class="large-10 large-offset-1 small-10 small-offset-1 members_maintable" visible="true" runat="server">
                 <table align="center" class="content_border">
-                    <tr>
+                    <tr class="member_searchsection">
                         <td>
-                            <h2>Members</h2>
+                            <asp:TextBox ID="txtSearch" CssClass="member_search" OnTextChanged="Search" placeholder="Search Member" AutoPostBack="true" runat="server"></asp:TextBox>
                             <div style="padding-left: 20px;">
                                 <asp:Label ID="lblError" ForeColor="Red" Font-Bold="true" runat="server" Text=""></asp:Label>
                             </div>
                         </td>
-                        <td style="float: right">
-                            <asp:Button ID="btnAddMember" runat="server" CssClass="cssButton" Text="Add Member" OnClick="btnAddMember_Click" />
+                        <td>
+                            <asp:Button ID="btnAddMember" CssClass="member_addbtn" runat="server" Text="+ Add Member" OnClick="btnAddMember_Click" />
                         </td>
                     </tr>
-                    <tr>
-                        <td width="100px">Search Member:
-                        </td>
-                        <td align="left">
-                            <%--                    <asp:DropDownList ID="ddClient" runat="server" AutoPostBack="true" OnSelectedIndexChanged="GetMember_Selected">
-                    </asp:DropDownList>--%>
-                            <asp:TextBox ID="txtSearch" OnTextChanged="Search" AutoPostBack="true" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
+                
+                    <tr class="member_tablesection">
                         <td colspan="2">
                             <asp:GridView Width="100%" ID="grdMembers" runat="server" AutoGenerateColumns="false" AllowPaging="true"
                                 OnPageIndexChanging="grdMembers_OnPaging" DataKeyName="MemberID" PageSize="50" RowStyle-HorizontalAlign="Left"
-                                CellPadding="5">
+                                CellPadding="5" CssClass="members_table">
                                 <Columns>
                                     <%--<asp:BoundField DataField="FamilyBookNumber" HeaderText="Family Book Number" />--%>
-                                    <asp:TemplateField>
+                                    <asp:TemplateField HeaderText="S. No">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="lnkFamilyBookNumber" runat="server" CommandArgument='<%#Eval("MemberID")%>'
                                                 Text='<%#Eval("FamilyBookNumber")%>' OnCommand="lnkSelect_Command"></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField>
+                                    <asp:TemplateField HeaderText="First Name">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="lnkFirstName" runat="server" CommandArgument='<%#Eval("MemberID")%>'
                                                 Text='<%#Eval("FirstName")%>' OnCommand="lnkSelect_Command"></asp:LinkButton>
@@ -64,7 +65,7 @@
                                     <%--<asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkSelect" runat="server" CommandArgument='<%#  
-                                         Eval("MemberID")%>'
+                                            Eval("MemberID")%>'
                                         Text="Select" OnCommand="lnkSelect_Command"></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>--%>
@@ -75,6 +76,25 @@
                 </table>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div id="divSelectedMemberAction" class="small-12 large-10 large-offset-1" visible="false" runat="server">
             <h2>Member:
                     <asp:Label ID="lblmemberName" runat="server" Text=""></asp:Label></h2>

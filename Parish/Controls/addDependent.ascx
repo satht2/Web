@@ -41,7 +41,7 @@
             </td>
             <td style="width: 30px;">&nbsp;
             </td>
-            <td>Date Of Birth(mm/dd/yyyy):
+            <td>Date Of Birth(dd/mm/yyyy):
             </td>
             <td>
                 <asp:TextBox ID="txtDOB" runat="server"></asp:TextBox>
