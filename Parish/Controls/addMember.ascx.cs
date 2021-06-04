@@ -3,6 +3,7 @@ using System.Web.UI.WebControls;
 using Parish.DB.Modules;
 using System.Data;
 using System.Text;
+using System.IO;
 
 public partial class Controls_addMember : System.Web.UI.UserControl
 {
@@ -75,6 +76,57 @@ public partial class Controls_addMember : System.Web.UI.UserControl
         txtFreeToMarry.Text = "";
         chkActive.Checked = true;
     }
+    private string AppendTimeStamp(string fileName)
+    {
+        return string.Concat(Path.GetFileNameWithoutExtension(fileName),
+            DateTime.Now.ToString("yyyyMMddHHmmssfff"),
+            Path.GetExtension(fileName));
+    }
+    protected void btnUpload_Click(object sender, EventArgs e)
+    {
+        string strFileName = fileMemberPhoto.PostedFile.FileName;
+        strFileName = Path.GetFileName(strFileName);
+        strFileName = AppendTimeStamp(strFileName);
+        string strFilePath;
+        string strFolder = "NenberPhoto/Temp/";
+        if(fileMemberPhoto.HasFile)
+        {
+            if (!Directory.Exists(strFolder))
+                Directory.CreateDirectory(strFolder);
+            strFilePath = strFolder + strFileName;
+            if (File.Exists(strFilePath))
+                File.Delete(strFilePath);
+
+            fileMemberPhoto.PostedFile.SaveAs(strFilePath);
+        }
+
+    }
+    private void SaveMemberImage(int memberID)
+    {
+        try
+        {
+            string strChurchName = ddChurch.SelectedValue;
+            string strFileName = fileMemberPhoto.PostedFile.FileName;
+            string strFileEx = Path.GetExtension(strFileName);
+            strFileName = memberID.ToString() + strFileEx;
+            string strFilePath;
+            string strFolder = "MemberPhoto/" + strChurchName + "/";
+            if (fileMemberPhoto.HasFile)
+            {
+                if (!Directory.Exists(strFolder))
+                    Directory.CreateDirectory(strFolder);
+                strFilePath = strFolder + strFileName;
+                if (File.Exists(strFilePath))
+                    File.Delete(strFilePath);
+
+                fileMemberPhoto.PostedFile.SaveAs(strFilePath);
+            }
+        }
+        catch (Exception ex)
+        {
+            lblError.Text = "Please contact admin, uploading image has an issue.<br/>" + ex.Message + msgError.ToString();
+        }
+    }
     protected void bSave_Click(object sender, EventArgs e)
     {
         try
@@ -108,6 +160,7 @@ public partial class Controls_addMember : System.Web.UI.UserControl
                         lblError.Text = "Family book number exist in the system.<br/>";
                     else
                     {
+                        SaveMemberImage(MemberID);
                         Page.Response.Redirect(Page.ResolveUrl("~/Member.aspx?success=addmember"));
                     }
                 }
@@ -128,6 +181,7 @@ public partial class Controls_addMember : System.Web.UI.UserControl
                     else
                     {
                         //lblError.Text = "Successfully Saved";
+                        SaveMemberImage(Convert.ToInt32(dv));
                         Page.Response.Redirect(Page.ResolveUrl("~/Member.aspx?success=addmember"));
                     }
                 }
@@ -183,13 +237,27 @@ public partial class Controls_addMember : System.Web.UI.UserControl
                 bValidate = false;
                 msgError.AppendFormat("Please select the Marital Status.<br/>");
             }
+
+            if (fileMemberPhoto.HasFile)
+            {
+                string strFileName = fileMemberPhoto.PostedFile.FileName;
+                strFileName = Path.GetFileName(strFileName);
+                string strFileEx = Path.GetExtension(strFileName);
+                int fileSize = fileMemberPhoto.PostedFile.ContentLength;
+
+                if (!(strFileEx.ToLower() == "jpg" || strFileEx.ToLower() == "jpeg" 
+                    || strFileEx.ToLower() == "png" || strFileEx.ToLower() == "gif"))
+                    msgError.AppendFormat("Please upload one of these file extension: jpeg, png and gif<br/>");
+                if(fileSize > 2100000)
+                    msgError.AppendFormat("File size need to be less than 2MB<br/>");
+            }
             //if (!string.IsNullOrWhiteSpace(txtFamilyBookNumber.Text.Trim()))
             //{
-                //if (!Utilities.IsNumeric(txtFamilyBookNumber.Text))
-                //{
-                //    bValidate = false;
-                //    msgError.AppendFormat("Enter number only for Family Book #<br/>");
-                //}
+            //if (!Utilities.IsNumeric(txtFamilyBookNumber.Text))
+            //{
+            //    bValidate = false;
+            //    msgError.AppendFormat("Enter number only for Family Book #<br/>");
+            //}
             //}
         }
         catch

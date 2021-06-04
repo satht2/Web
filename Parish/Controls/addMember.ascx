@@ -151,6 +151,19 @@
                 <asp:CheckBox ID="chkActive" runat="server" Checked="true" />
             </td>
         </tr>
+        <tr>
+            <td>Upload member photo:<br />(file extension: jpeg, png and gif)
+            </td>
+            <td>
+                <asp:FileUpload ID="fileMemberPhoto" runat="server" /><br />
+                <asp:Button ID="btnUpload" OnClick="btnUpload_Click" runat="server" Text="Upload file" />
+            </td>
+            <td style="width: 30px;">&nbsp;
+            </td>
+            <td colspan="2">
+                <asp:Image ID="Image1" runat="server" />
+            </td>
+        </tr>
     </table>
 
     <table align="center" class="content_border">
