@@ -45,17 +45,17 @@
             </td>
         </tr>
         <tr>
-            <td style="width: 150px;">First Name:
+            <td style="width: 150px;">Name:
             </td>
             <td>
                 <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
             </td>
             <td style="width: 30px;">&nbsp;
             </td>
-            <td style="width: 130px;">Last Name:
+            <td style="width: 130px;"><%--Last Name:--%>
             </td>
             <td>
-                <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtLastName" Visible="false" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -152,16 +152,15 @@
             </td>
         </tr>
         <tr>
-            <td>Upload member photo:<br />(file extension: jpeg, png and gif)
-            </td>
-            <td>
+            <td colspan="2">Upload member photo (file extension: jpeg, png and gif) :
+                <br />
                 <asp:FileUpload ID="fileMemberPhoto" runat="server" /><br />
-                <asp:Button ID="btnUpload" OnClick="btnUpload_Click" runat="server" Text="Upload file" />
+                <%--<asp:Button ID="btnUpload" OnClick="btnUpload_Click" runat="server" Text="Upload file" />--%>
             </td>
             <td style="width: 30px;">&nbsp;
             </td>
             <td colspan="2">
-                <asp:Image ID="Image1" runat="server" />
+                <asp:Image ID="Image1" runat="server" Width="100px" />
             </td>
         </tr>
     </table>

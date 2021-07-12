@@ -124,6 +124,7 @@ public partial class Member : PageBase
         SetDivNotVisible();
         divSelectedMember.Visible = true;
         divSelectedMemberAction.Visible = true;
+        divMemberPhoto.Visible = false;
     }
 
     protected void lnkEdit_Command(object sender, CommandEventArgs e)
@@ -134,9 +135,27 @@ public partial class Member : PageBase
         divClientinfo.Visible = true;
         divSelectedMemberAction.Visible = true;
         divSelectedMember.Visible = false;
+        divMemberPhoto.Visible = false;
     }
-    protected void lnkEditCertificate_Command(object sender, CommandEventArgs e)
+
+    protected void lnkPhto_Command(object sender, CommandEventArgs e)
     {
+        string[] arg = new string[2];
+        arg = e.CommandArgument.ToString().Split(';');
+        Session["MemberID"] = arg[0];
+        Session["ChurchID"] = arg[1];
+        //addMemberPhoto.MemberID = memberID;
+        //addMember.EditMember();
+        divMemberPhoto.Visible = true;
+        divClientinfo.Visible = false;
+        divSelectedMemberAction.Visible = true;
+        divSelectedMember.Visible = false;
+    }
+    protected void lnkViewCertificate_Command(object sender, CommandEventArgs e)
+    {
+        string[] arg = new string[2];
+        arg = e.CommandArgument.ToString().Split(';');
+
         //int memberID = Convert.ToInt32(e.CommandArgument);
         //addMember.MemberID = memberID;
         //addMember.EditMember();
@@ -227,6 +246,7 @@ public partial class Member : PageBase
         divConfirmation.Visible = false;
         divDeath.Visible = false;
         divMarriage.Visible = false;
+        divMemberPhoto.Visible = false;
 
         //divMembers.Visible = false;
         //divClientinfo.Visible = false;

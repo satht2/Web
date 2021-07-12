@@ -64,6 +64,7 @@ public partial class Controls_addCertificateOfConfirmation : System.Web.UI.UserC
         txtMinister.Text = "";
         txtDOGiven.Text = "";
         txtParishPriest.Text = "";
+        txtDOB.Text = "";
     }
     protected void bSave_Click(object sender, EventArgs e)
     {
@@ -77,7 +78,8 @@ public partial class Controls_addCertificateOfConfirmation : System.Web.UI.UserC
 
                 string dv = dC.InsertCertifiateOfConfirmation(MemberID, 2, txtName.Text, ddSex.SelectedValue, txtParentFatherName.Text
                     , txtParentMotherName.Text, Convert.ToDateTime(txtDOConfirmation.Text), Convert.ToDateTime(txtDOBaptism.Text)
-                    , txtPlaceOfConfirmation.Text, txtMinister.Text, txtParishPriest.Text, Convert.ToDateTime(txtDOGiven.Text), UserID);
+                    , txtPlaceOfConfirmation.Text, txtMinister.Text, txtParishPriest.Text, Convert.ToDateTime(txtDOGiven.Text)
+                    , UserID, Convert.ToDateTime(txtDOB.Text));
 
                 if (Utilities.IsNumeric(dv) && Convert.ToInt32(dv) == -1)
                 {
@@ -167,6 +169,11 @@ public partial class Controls_addCertificateOfConfirmation : System.Web.UI.UserC
             {
                 bValidate = false;
                 msgError.AppendFormat("Enter parish priest name<br/>");
+            }
+            if (string.IsNullOrWhiteSpace(txtDOB.Text.Trim()))
+            {
+                bValidate = false;
+                msgError.AppendFormat("Please select the Date of birth.<br/>");
             }
         }
         catch

@@ -64,6 +64,7 @@ public partial class Controls_addCertificateOfDeath : System.Web.UI.UserControl
         txtDeed.Text = "";
         txtDOGiven.Text = "";
         txtParishPriest.Text = "";
+        txtDOB.Text = "";
     }
     protected void bSave_Click(object sender, EventArgs e)
     {
@@ -78,7 +79,7 @@ public partial class Controls_addCertificateOfDeath : System.Web.UI.UserControl
 
                 string dv = dC.InsertCertifiateOfDeath(MemberID, 3, txtName.Text, ddSex.SelectedValue, Convert.ToInt32(txtAge.Text)
                     , txtAddress.Text, Convert.ToDateTime(txtDODeath.Text), Convert.ToDateTime(txtDOBurial.Text), txtPlaceOfBurial.Text
-                    , Convert.ToDateTime(txtDOGiven.Text), txtParishPriest.Text, UserID, txtDeed.Text);
+                    , Convert.ToDateTime(txtDOGiven.Text), txtParishPriest.Text, UserID, txtDeed.Text, Convert.ToDateTime(txtDOB.Text));
 
                 if (Utilities.IsNumeric(dv) && Convert.ToInt32(dv) == -1)
                 {
@@ -173,6 +174,11 @@ public partial class Controls_addCertificateOfDeath : System.Web.UI.UserControl
             {
                 bValidate = false;
                 msgError.AppendFormat("Enter place of burial.<br/>");
+            }
+            if (string.IsNullOrWhiteSpace(txtDOB.Text.Trim()))
+            {
+                bValidate = false;
+                msgError.AppendFormat("Please select the Date of birth.<br/>");
             }
         }
         catch

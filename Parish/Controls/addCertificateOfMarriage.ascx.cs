@@ -59,6 +59,8 @@ public partial class Controls_addCertificateOfMarriage : System.Web.UI.UserContr
         txtDOGivenOnDate.Text = "";
         txtParishPriest.Text = "";
         txtGivenPlace.Text = "";
+        txtBridegroomDOB.Text = "";
+        txtBrideDOB.Text = "";
     }
 
     protected void bSave_Click(object sender, EventArgs e)
@@ -76,7 +78,7 @@ public partial class Controls_addCertificateOfMarriage : System.Web.UI.UserContr
                     , txtGroomMotherName.Text, txtBrideFatherName.Text, txtBrideMotherName.Text, Convert.ToDateTime(txtDOMarriage.Text) 
                     ,txtWitness1.Text
                     , txtWitness2.Text, txtSigned.Text, txtParishPriest.Text, txtGivenPlace.Text, Convert.ToDateTime(txtDOGivenOnDate.Text)
-                    , UserID);
+                    , UserID, Convert.ToDateTime(txtBridegroomDOB.Text), Convert.ToDateTime(txtBrideDOB));
 
                 if (Utilities.IsNumeric(dv) && Convert.ToInt32(dv) == -1)
                 {
@@ -181,6 +183,16 @@ public partial class Controls_addCertificateOfMarriage : System.Web.UI.UserContr
             {
                 bValidate = false;
                 msgError.AppendFormat("Enter given place<br/>");
+            }
+            if (string.IsNullOrWhiteSpace(txtBridegroomDOB.Text.Trim()))
+            {
+                bValidate = false;
+                msgError.AppendFormat("Please select bride groom Date of birth.<br/>");
+            }
+            if (string.IsNullOrWhiteSpace(txtBrideDOB.Text.Trim()))
+            {
+                bValidate = false;
+                msgError.AppendFormat("Please select bride Date of birth.<br/>");
             }
         }
         catch

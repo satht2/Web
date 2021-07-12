@@ -17,6 +17,7 @@ public partial class Controls_addMember : System.Web.UI.UserControl
             GetChurches();
             GetSex();
 
+            Session["ChurchID"] = null;
             if (MemberID != 0)
             {
                 Session["MemberID"] = MemberID;
@@ -84,22 +85,23 @@ public partial class Controls_addMember : System.Web.UI.UserControl
     }
     protected void btnUpload_Click(object sender, EventArgs e)
     {
-        string strFileName = fileMemberPhoto.PostedFile.FileName;
-        strFileName = Path.GetFileName(strFileName);
-        strFileName = AppendTimeStamp(strFileName);
-        string strFilePath;
-        string strFolder = "NenberPhoto/Temp/";
-        if(fileMemberPhoto.HasFile)
-        {
-            if (!Directory.Exists(strFolder))
-                Directory.CreateDirectory(strFolder);
-            strFilePath = strFolder + strFileName;
-            if (File.Exists(strFilePath))
-                File.Delete(strFilePath);
+        //string strFileName = fileMemberPhoto.PostedFile.FileName;
+        //strFileName = Path.GetFileName(strFileName);
+        //strFileName = AppendTimeStamp(strFileName);
+        //string strFilePath;
+        //string strFolder = "~/MemberPhoto/Temp/";
+        //if(fileMemberPhoto.HasFile)
+        //{
+        //    if (!Directory.Exists(strFolder))
+        //        Directory.CreateDirectory(strFolder);
+        //    strFilePath = strFolder + strFileName;
+        //    if (File.Exists(strFilePath))
+        //        File.Delete(strFilePath);
 
-            fileMemberPhoto.PostedFile.SaveAs(strFilePath);
-        }
-
+        //    fileMemberPhoto.PostedFile.SaveAs(Server.MapPath(strFolder) + strFileName);
+        //}
+        MemberID = Convert.ToInt32(Session["MemberID"]);
+        SaveMemberImage(MemberID);
     }
     private void SaveMemberImage(int memberID)
     {
@@ -110,7 +112,8 @@ public partial class Controls_addMember : System.Web.UI.UserControl
             string strFileEx = Path.GetExtension(strFileName);
             strFileName = memberID.ToString() + strFileEx;
             string strFilePath;
-            string strFolder = "MemberPhoto/" + strChurchName + "/";
+            string strFolder = "~/MemberPhoto/" + strChurchName + "/";
+            strFolder = Server.MapPath(strFolder);
             if (fileMemberPhoto.HasFile)
             {
                 if (!Directory.Exists(strFolder))
@@ -121,6 +124,15 @@ public partial class Controls_addMember : System.Web.UI.UserControl
 
                 fileMemberPhoto.PostedFile.SaveAs(strFilePath);
             }
+
+            DataClients dC = new DataClients();
+            int updateValue = dC.UpdateMemberPhoto(MemberID, strFileName);
+            if (updateValue == -1)
+            {
+                lblError.Text = "DB Error.<br/>";
+            }
+            else if (updateValue == -2)
+                lblError.Text = "Family book number exist in the system.<br/>";
         }
         catch (Exception ex)
         {
@@ -143,6 +155,7 @@ public partial class Controls_addMember : System.Web.UI.UserControl
                 //{
                 //    FamilyBookNumber = Convert.ToInt32(txtFamilyBookNumber.Text);
                 //}
+                int churchID = Convert.ToInt32(ddChurch.SelectedValue);
                 if ((Session["MemberID"] != null) && (IsNumeric(Session["MemberID"])))
                 {
                     MemberID = Convert.ToInt32(Session["MemberID"]);
@@ -151,7 +164,7 @@ public partial class Controls_addMember : System.Web.UI.UserControl
                     int updateValue = dC.UpdateMember(MemberID, txtFirstName.Text, txtLastName.Text, Convert.ToDateTime(txtDOB.Text), ddSex.SelectedValue,
                                 txtNotes.Text, txtAddress.Text, txtCity.Text, txtPostalCode.Text, txtHomePhone.Text,
                                 txtCellPhone.Text, txtPreContact.Text, ddMaritalStatus.SelectedIndex, txtEmail.Text,
-                                txtFamilyBookNumber.Text, chkActive.Checked, FreeToMarry);
+                                txtFamilyBookNumber.Text, chkActive.Checked, FreeToMarry, churchID);
                     if (updateValue == -1)
                     {
                         lblError.Text = "DB Error.<br/>";
@@ -171,7 +184,7 @@ public partial class Controls_addMember : System.Web.UI.UserControl
                     string dv = dC.InsertMember(txtFirstName.Text, txtLastName.Text, Convert.ToDateTime(txtDOB.Text), ddSex.SelectedValue,
                                 txtNotes.Text, txtAddress.Text, txtCity.Text, txtPostalCode.Text, txtHomePhone.Text,
                                 txtCellPhone.Text, txtPreContact.Text, ddMaritalStatus.SelectedIndex, txtEmail.Text,
-                                txtFamilyBookNumber.Text, chkActive.Checked, FreeToMarry);
+                                txtFamilyBookNumber.Text, chkActive.Checked, FreeToMarry, churchID);
                     if (IsNumeric(dv) && Convert.ToInt32(dv) == -1)
                     {
                         lblError.Text = "DB Error.<br/>";
@@ -232,6 +245,12 @@ public partial class Controls_addMember : System.Web.UI.UserControl
                 msgError.AppendFormat("Please select the sex.<br/>");
             }
 
+            if (ddChurch.SelectedIndex == 0)
+            {
+                bValidate = false;
+                msgError.AppendFormat("Please select the church.<br/>");
+            }
+
             if (ddMaritalStatus.SelectedIndex == 0)
             {
                 bValidate = false;
@@ -288,7 +307,14 @@ public partial class Controls_addMember : System.Web.UI.UserControl
         txtCellPhone.Text = oDataTable.Rows[0]["cellPhone"].ToString();
         txtPreContact.Text = oDataTable.Rows[0]["preferredMethodContact"].ToString();
         ddMaritalStatus.SelectedValue = oDataTable.Rows[0]["MaritalStatusID"].ToString();
+        ddChurch.SelectedValue = oDataTable.Rows[0]["ChurchID"].ToString();
         txtEmail.Text = oDataTable.Rows[0]["email"].ToString();
+
+        string strChurchName = oDataTable.Rows[0]["ChurchID"].ToString();
+        string strFileName = oDataTable.Rows[0]["PhotoFileName"].ToString();
+        string strFolder = "~/MemberPhoto/" + strChurchName + "/" + strFileName;
+        Image1.ImageUrl = strFolder;
+
         if (!string.IsNullOrWhiteSpace(oDataTable.Rows[0]["FamilyBookNumber"].ToString()))
         {
             txtFamilyBookNumber.Text = oDataTable.Rows[0]["FamilyBookNumber"].ToString();

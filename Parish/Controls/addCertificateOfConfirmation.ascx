@@ -20,6 +20,12 @@
             maxDate: "+0M + 0D",
             dateFormat: 'd-m-yy'
         });
+        $("#<%= txtDOB.ClientID %>").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            maxDate: "+0M + 0D",
+            dateFormat: 'd-m-yy'
+        });
     });
 
 </script>
@@ -110,9 +116,11 @@
             </td>
             <td style="width: 30px;">&nbsp;
             </td>
-            <td>&nbsp;
+            <td>
+                Date of Birth(d-m-yy):
             </td>
-            <td>&nbsp;
+            <td>
+                <asp:TextBox ID="txtDOB" runat="server"></asp:TextBox>
             </td>
         </tr>
     </table>

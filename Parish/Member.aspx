@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" EnableViewState="true" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Member.aspx.cs" Inherits="Member" %>
 
 <%@ Register Src="~/Controls/addMember.ascx" TagPrefix="uc1" TagName="addMember" %>
+<%@ Register Src="~/Controls/addMemberPhoto.ascx" TagPrefix="uc1" TagName="addMemberPhoto" %>
 <%@ Register Src="~/Controls/addDonation.ascx" TagPrefix="uc1" TagName="addDonation" %>
 <%@ Register Src="~/Controls/addDependent.ascx" TagPrefix="uc1" TagName="addDependent" %>
 <%@ Register Src="~/Controls/addCertificateOfBaptism.ascx" TagPrefix="uc1" TagName="addCertificateOfBaptism" %>
@@ -50,14 +51,14 @@
                                                 Text='<%#Eval("FamilyBookNumber")%>' OnCommand="lnkSelect_Command"></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="First Name">
+                                    <asp:TemplateField HeaderText="Name">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="lnkFirstName" runat="server" CommandArgument='<%#Eval("MemberID")%>'
                                                 Text='<%#Eval("FirstName")%>' OnCommand="lnkSelect_Command"></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <%--<asp:BoundField DataField="FirstName" HeaderText="First Name" />--%>
-                                    <asp:BoundField DataField="LastName" HeaderText="Last Name" />
+                                    <%--<asp:BoundField DataField="LastName" HeaderText="Last Name" />--%>
                                     <asp:BoundField DataField="HomePhone" HeaderText="Home Phone" />
                                     <asp:BoundField DataField="CellPhone" HeaderText="Cell Phone" />
                                     <asp:BoundField DataField="Email" HeaderText="Email" />
@@ -137,8 +138,8 @@
                             <asp:GridView Width="100%" ID="grdSelectedMember" runat="server" AutoGenerateColumns="false" DataKeyName="MemberID" RowStyle-HorizontalAlign="Left" CellPadding="5">
                                 <Columns>
                                     <asp:BoundField DataField="FamilyBookNumber" HeaderText="Family Book Number" />
-                                    <asp:BoundField DataField="FirstName" HeaderText="First Name" />
-                                    <asp:BoundField DataField="LastName" HeaderText="Last Name" />
+                                    <asp:BoundField DataField="FirstName" HeaderText="Name" />
+                                    <%--<asp:BoundField DataField="LastName" HeaderText="Last Name" />--%>
                                     <asp:BoundField DataField="HomePhone" HeaderText="Home Phone" />
                                     <asp:BoundField DataField="CellPhone" HeaderText="Cell Phone" />
                                     <asp:BoundField DataField="Email" HeaderText="Email" />
@@ -155,6 +156,13 @@
                                             Text="Delete" OnClick="lnkRemove_Click"></asp:LinkButton>--%>
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                    <%--<asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="lnkPhoto" runat="server" CommandArgument='<%#  
+                                                 Eval("MemberID") + ";" + Eval("ChurchID")%>'
+                                                Text="Add/Edit Photo" OnCommand="lnkPhto_Command"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
                                 </Columns>
                             </asp:GridView>
                             <br />
@@ -166,8 +174,8 @@
                             <asp:GridView Width="100%" ID="grdDependents" runat="server" AutoGenerateColumns="false" AlternatingRowStyle-BackColor="#E9ECF1" HeaderStyle-BackColor="white" Font-Names="Arial" RowStyle-HorizontalAlign="Left" RowStyle-Height="22" HeaderStyle-Height="25" FooterStyle-HorizontalAlign="Center" FooterStyle-Font-Bold="true" FooterStyle-ForeColor="#555555" ShowFooter="true" CellPadding="5">
                                 <Columns>
                                     <asp:BoundField DataField="DependentType" HeaderText="Dependent Relationship" />
-                                    <asp:BoundField DataField="FirstName" HeaderText="First Name" />
-                                    <asp:BoundField DataField="LastName" HeaderText="Last Name" />
+                                    <asp:BoundField DataField="FirstName" HeaderText="Name" />
+                                    <%--<asp:BoundField DataField="LastName" HeaderText="Last Name" />--%>
                                     <asp:BoundField DataField="DOB" HeaderText="Date Of Birth" />
                                     <asp:BoundField DataField="Sex" HeaderText="Sex" />
                                 </Columns>
@@ -206,6 +214,13 @@
                                     <asp:BoundField DataField="CertificateType" HeaderText="Certificate Name" />
                                     <asp:BoundField DataField="ParentFather" HeaderText="Parent Father" />
                                     <asp:BoundField DataField="ParentMother" HeaderText="Parent Mother" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="lnkView" runat="server" CommandArgument='<%#  
+                                                 Eval("CertificateID")+ ";" + Eval("CertificateTypeID")%>'
+                                                Text="View" OnCommand="lnkViewCertificate_Command"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                 </Columns>
                                 <EmptyDataTemplate>
                                     <div>No records found.</div>
@@ -235,6 +250,9 @@
             </div>
             <div id="divClientinfo" class="small-12 large-10 large-offset-1" runat="server" visible="false">
                 <uc1:addMember runat="server" ID="addMember" />
+            </div>
+            <div id="divMemberPhoto" class="small-12 large-10 large-offset-1" runat="server" visible="false">
+                <%--<uc1:addMemberPhoto runat="server" ID="addMemberPhoto" />--%>
             </div>
         </div>
     </div>

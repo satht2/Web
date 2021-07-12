@@ -14,6 +14,18 @@
             maxDate: "+0M + 0D",
             dateFormat: 'd-m-yy'
         });
+        $("#<%= txtBridegroomDOB.ClientID %>").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            maxDate: "+0M + 0D",
+            dateFormat: 'd-m-yy'
+        });
+        $("#<%= txtBrideDOB.ClientID %>").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            maxDate: "+0M + 0D",
+            dateFormat: 'd-m-yy'
+        });
     });
 
 </script>
@@ -40,6 +52,20 @@
             </td>
         </tr>
         <tr>
+            <td style="width: 150px;">Bridegroom Date of Birth(d-m-yy):
+            </td>
+            <td>
+                <asp:TextBox ID="txtBridegroomDOB" runat="server"></asp:TextBox>
+            </td>
+            <td style="width: 30px;">&nbsp;
+            </td>
+            <td>Bride Date of Birth(d-m-yy):
+            </td>
+            <td>
+                <asp:TextBox ID="txtBrideDOB" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
             <td style="width: 150px;">Bridegroom's Father Name:
             </td>
             <td>
@@ -47,18 +73,18 @@
             </td>
             <td style="width: 30px;">&nbsp;
             </td>
-            <td style="width: 130px;">Bridegroom's Mother Name:
-            </td>
-            <td>
-                <asp:TextBox ID="txtGroomMotherName" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
             <td style="width: 150px;">Bride's Father Name:
             </td>
             <td>
                 <asp:TextBox ID="txtBrideFatherName" runat="server"></asp:TextBox>
             </td>
+        </tr>
+        <tr>
+            <td style="width: 130px;">Bridegroom's Mother Name:
+            </td>
+            <td>
+                <asp:TextBox ID="txtGroomMotherName" runat="server"></asp:TextBox>
+            </td>            
             <td style="width: 30px;">&nbsp;
             </td>
             <td style="width: 130px;">Bride's Mother Name:
